@@ -29,13 +29,5 @@ public class SubmitResultsComponent {
         resultTitle.shouldNotBe(visible);
         return this;
     }
-
-    public SubmitResultsComponent checkDateOfBirth(String day, String month, String year){
-        tableResponsive.$(byText("Date of Birth")).parent()
-                .shouldHave(text(day+" "+month+" "+ year));
-        return this;
-    }
-
-
 }
 
