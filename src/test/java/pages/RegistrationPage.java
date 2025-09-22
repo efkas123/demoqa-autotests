@@ -15,11 +15,11 @@ public class RegistrationPage {
             userEmail = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
             userNumber = $("#userNumber"),
-            calendarInput = $("#dateOfBirthIbput"),
+            calendarInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
             hobbiesWrapper = $("#hobbiesWrapper"),
-            uploadPicture = $("uploadPicture"),
-            currentAddress = $("currentAddress"),
+            uploadPicture = $("#uploadPicture"),
+            currentAddress = $("#currentAddress"),
             stateInput = $("#react-select-3-input"),
             cityInput = $("#react-select-4-input"),
             submit = $("#submit");
@@ -73,10 +73,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setHobbies(String hobbiesOne, String hobbiesTwo,  String hobbiesThree){
-        hobbiesWrapper.$(byText(hobbiesOne)).click();
-        hobbiesWrapper.$(byText(hobbiesTwo)).click();
-        hobbiesWrapper.$(byText(hobbiesThree)).click();
+    public RegistrationPage setHobbies(String hobby){
+        hobbiesWrapper.$(byText(hobby)).click();
         return this;
     }
 
