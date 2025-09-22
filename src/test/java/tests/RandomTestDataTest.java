@@ -47,7 +47,7 @@ public class RandomTestDataTest extends TestBase {
         //Проверка значений
         registrationResults
                 .checkFormVisible("Thanks for submitting the form")
-                .checkFormResults("Student Name", firstName)
+                .checkFormResults("Student Name", firstName +  " " + lastName)
                 .checkFormResults("Student Email", userEmail)
                 .checkFormResults("Gender", gender)
                 .checkFormResults("Mobile", userNumber)
@@ -64,17 +64,17 @@ public class RandomTestDataTest extends TestBase {
         registrationPage
                 .openPage()
                 .deleteAdds()
-                .setFirstName("Filipp")
-                .setLastName("Kotov")
-                .setGender("Male")
-                .setUserNumber("1234567890")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setGender(gender)
+                .setUserNumber(userNumber)
                 .clickSubmit();
 
         registrationResults
                 .checkFormVisible("Thanks for submitting the form")
-                .checkFormResults("Student Name", "Filipp Kotov")
-                .checkFormResults("Gender", "Male")
-                .checkFormResults("Mobile", "1234567890");
+                .checkFormResults("Student Name", firstName +  " " + lastName)
+                .checkFormResults("Gender", gender)
+                .checkFormResults("Mobile", userNumber);
     }
 
     @Test
