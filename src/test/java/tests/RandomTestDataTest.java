@@ -3,6 +3,7 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.SubmitResultsComponent;
+import utils.TestData;
 
 import static utils.RandomTestDataUtils.*;
 
@@ -10,53 +11,41 @@ public class RandomTestDataTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     SubmitResultsComponent registrationResults = new SubmitResultsComponent();
+    TestData random = new TestData();
 
 
-    String
-            firstName = getFirstName(),
-            lastName = getLastName(),
-            userEmail = getUserEmail(),
-            gender = getGender(),
-            userNumber = getUserNumber(),
-            dateOfBirth[] = getBirthDateParts(14, 99),
-            subjects = getSubjects(),
-            hobbies = getHobbies(),
-            profilePicture = getPicture(),
-            address = getUserAddress(),
-            state = getState(),
-            city = getCity(state);
 
     @Test
     void fullFillFormTest() {
         registrationPage
                 .openPage()
                 .deleteAdds()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
-                .setGender(gender)
-                .setUserNumber(userNumber)
-                .setDateOfBirth(dateOfBirth[0], dateOfBirth[1], dateOfBirth[2])
-                .setSubjects(subjects)
-                .setHobbies(hobbies)
-                .setProfilePicture(profilePicture)
-                .setAddress(address)
-                .setStateAndCity(state,city)
+                .setFirstName(random.firstName)
+                .setLastName(random.lastName)
+                .setEmail(random.userEmail)
+                .setGender(random.gender)
+                .setUserNumber(random.userNumber)
+                .setDateOfBirth(random.dateOfBirth[0], random.dateOfBirth[1], random.dateOfBirth[2])
+                .setSubjects(random.subjects)
+                .setHobbies(random.hobbies)
+                .setProfilePicture(random.profilePicture)
+                .setAddress(random.address)
+                .setStateAndCity(random.state,random.city)
                 .clickSubmit();
 
         //Проверка значений
         registrationResults
                 .checkFormVisible("Thanks for submitting the form")
-                .checkFormResults("Student Name", firstName +  " " + lastName)
-                .checkFormResults("Student Email", userEmail)
-                .checkFormResults("Gender", gender)
-                .checkFormResults("Mobile", userNumber)
-                .checkFormResults("Date of Birth", (dateOfBirth[0] + " " + dateOfBirth[1] + "," + dateOfBirth[2]))
-                .checkFormResults("Subjects", subjects)
-                .checkFormResults("Hobbies", hobbies)
-                .checkFormResults("Picture", profilePicture)
-                .checkFormResults("Address", address)
-                .checkFormResults("State and City", (state + " " + city));
+                .checkFormResults("Student Name", random.firstName +  " " + random.lastName)
+                .checkFormResults("Student Email", random.userEmail)
+                .checkFormResults("Gender", random.gender)
+                .checkFormResults("Mobile", random.userNumber)
+                .checkFormResults("Date of Birth", (random.dateOfBirth[0] + " " + random.dateOfBirth[1] + "," + random.dateOfBirth[2]))
+                .checkFormResults("Subjects", random.subjects)
+                .checkFormResults("Hobbies", random.hobbies)
+                .checkFormResults("Picture", random.profilePicture)
+                .checkFormResults("Address", random.address)
+                .checkFormResults("State and City", (random.state + " " + random.city));
     }
 
     @Test
@@ -64,17 +53,17 @@ public class RandomTestDataTest extends TestBase {
         registrationPage
                 .openPage()
                 .deleteAdds()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(gender)
-                .setUserNumber(userNumber)
+                .setFirstName(random.firstName)
+                .setLastName(random.lastName)
+                .setGender(random.gender)
+                .setUserNumber(random.userNumber)
                 .clickSubmit();
 
         registrationResults
                 .checkFormVisible("Thanks for submitting the form")
-                .checkFormResults("Student Name", firstName +  " " + lastName)
-                .checkFormResults("Gender", gender)
-                .checkFormResults("Mobile", userNumber);
+                .checkFormResults("Student Name", random.firstName +  " " + random.lastName)
+                .checkFormResults("Gender", random.gender)
+                .checkFormResults("Mobile", random.userNumber);
     }
 
     @Test
