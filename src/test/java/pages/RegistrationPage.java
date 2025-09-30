@@ -31,8 +31,8 @@ public class RegistrationPage {
     }
 
     public RegistrationPage deleteAdds(){
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('#footer').remove()");
+        executeJavaScript("$('#fixedban').remove();");
+        executeJavaScript("$('#footer').remove();");
         return this;
     }
 
