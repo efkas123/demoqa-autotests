@@ -1,5 +1,7 @@
 package tests;
 
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.SubmitResultsComponent;
@@ -7,11 +9,18 @@ import utils.TestData;
 
 import static utils.RandomTestDataUtils.*;
 
-public class RandomTestDataTest extends TestBase {
+public class RandomTestDataTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
     SubmitResultsComponent registrationResults = new SubmitResultsComponent();
     TestData random = new TestData();
+
+    @BeforeAll
+    static void setUp() {
+        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.pageLoadStrategy = "eager";
+    }
 
 
 
