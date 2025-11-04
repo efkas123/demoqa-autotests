@@ -1,5 +1,7 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.SubmitResultsComponent;
@@ -9,7 +11,9 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     SubmitResultsComponent registrationResults = new SubmitResultsComponent();
 
+
     @Test
+    @Tag("demoqa")
     void fullFillFormTest() {
         registrationPage
                 .openPage()
