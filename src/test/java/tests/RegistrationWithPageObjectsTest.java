@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.SubmitResultsComponent;
 
+import static io.qameta.allure.Allure.step;
+
 public class RegistrationWithPageObjectsTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -15,23 +17,34 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     @Test
     @Tag("demoqa")
     void fullFillFormTest() {
-        registrationPage
-                .openPage()
-                .deleteAdds()
-                .setFirstName("Filipp")
-                .setLastName("Kotov")
-                .setEmail("hello@yandex.ru")
-                .setGender("Male")
-                .setUserNumber("1234567890")
-                .setDateOfBirth("13","January","2002")
-                .setSubjects("Arts")
-                .setHobbies("Sports","Reading","Music")
-                .setProfilePicture("YoshiSittingThere.jpg")
-                .setAddress("Krasnodar")
-                .setStateAndCity("Haryana","Karnal")
-                .clickSubmit();
 
-        //Проверка значений
+        step("Open form", () -> {
+            registrationPage
+                    .openPage()
+                    .deleteAdds();
+        });
+
+        step("Fill form", () -> {
+            registrationPage
+                    .setFirstName("Filipp")
+                    .setLastName("Kotov")
+                    .setEmail("hello@yandex.ru")
+                    .setGender("Male")
+                    .setUserNumber("1234567890")
+                    .setDateOfBirth("13", "January", "2002")
+                    .setSubjects("Arts")
+                    .setHobbies("Sports", "Reading", "Music")
+                    .setProfilePicture("YoshiSittingThere.jpg")
+                    .setAddress("Krasnodar")
+                    .setStateAndCity("Haryana", "Karnal");
+        });
+
+        step("Click submit", () -> {
+                registrationPage
+                        .clickSubmit();
+                });
+
+        step("Asserting results", () -> {
         registrationResults
                 .checkFormVisible("Thanks for submitting the form")
                 .checkFormResults("Student Name", "Filipp Kotov")
@@ -44,8 +57,8 @@ public class RegistrationWithPageObjectsTest extends TestBase {
                 .checkFormResults("Picture", "YoshiSittingThere.jpg")
                 .checkFormResults("Address", "Krasnodar")
                 .checkFormResults("State and City", "Haryana Karnal");
-    }
-
+    });
+}
     @Test
     void minimalFillFormTest(){
         registrationPage
