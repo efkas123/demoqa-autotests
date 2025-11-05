@@ -1,7 +1,6 @@
 package tests;
 
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.SubmitResultsComponent;
@@ -40,27 +39,28 @@ public class RegistrationWithPageObjectsTest extends TestBase {
         });
 
         step("Click submit", () -> {
-                registrationPage
-                        .clickSubmit();
-                });
+            registrationPage
+                    .clickSubmit();
+        });
 
         step("Asserting results", () -> {
-        registrationResults
-                .checkFormVisible("Thanks for submitting the form")
-                .checkFormResults("Student Name", "Filipp Kotov")
-                .checkFormResults("Student Email", "hello@yandex.ru")
-                .checkFormResults("Gender", "Male")
-                .checkFormResults("Mobile", "1234567890")
-                .checkFormResults("Date of Birth", "13 January,2002")
-                .checkFormResults("Subjects", "Arts")
-                .checkFormResults("Hobbies", "Sports, Reading, Music")
-                .checkFormResults("Picture", "YoshiSittingThere.jpg")
-                .checkFormResults("Address", "Krasnodar")
-                .checkFormResults("State and City", "Haryana Karnal");
-    });
-}
+            registrationResults
+                    .checkFormVisible("Thanks for submitting the form")
+                    .checkFormResults("Student Name", "Filipp Kotov")
+                    .checkFormResults("Student Email", "hello@yandex.ru")
+                    .checkFormResults("Gender", "Male")
+                    .checkFormResults("Mobile", "1234567890")
+                    .checkFormResults("Date of Birth", "13 January,2002")
+                    .checkFormResults("Subjects", "Arts")
+                    .checkFormResults("Hobbies", "Sports, Reading, Music")
+                    .checkFormResults("Picture", "YoshiSittingThere.jpg")
+                    .checkFormResults("Address", "Krasnodar")
+                    .checkFormResults("State and City", "Haryana Karnal");
+        });
+    }
+
     @Test
-    void minimalFillFormTest(){
+    void minimalFillFormTest() {
         registrationPage
                 .openPage()
                 .deleteAdds()
@@ -78,7 +78,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     }
 
     @Test
-    void negativeFillFormTest(){
+    void negativeFillFormTest() {
         registrationPage
                 .openPage()
                 .deleteAdds()
