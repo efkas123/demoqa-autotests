@@ -1,9 +1,15 @@
 package tests;
 
+import com.codeborne.selenide.Configuration;
+import helpers.Attachments;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
 import pages.components.SubmitResultsComponent;
+
+import java.util.Map;
 
 import static io.qameta.allure.Allure.step;
 
@@ -12,10 +18,26 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     SubmitResultsComponent registrationResults = new SubmitResultsComponent();
 
+    @AfterEach
+    void addAttachments() {
+        Attachments.screenshotAs("Last Screenshot");
+        Attachments.pageSource();
+        Attachments.browserConsoleLogs();
+        Attachments.addVideo();
+    }
+
+
 
     @Test
     @Tag("demoqa")
     void fullFillFormTest() {
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
 
         step("Open form", () -> {
             registrationPage
