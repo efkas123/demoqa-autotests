@@ -11,7 +11,7 @@ public class TestBase {
     static void setUp() {
         Configuration.browserSize = System.getProperty("browserResolution", "1920x1080");
         Configuration.browser = System.getProperty("browser", "chrome");
-        //Configuration.browserVersion = System.getProperty("browserVersion");
+        Configuration.browserVersion = System.getProperty("browserVersion");
         Configuration.remote = System.getProperty("remoteUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
