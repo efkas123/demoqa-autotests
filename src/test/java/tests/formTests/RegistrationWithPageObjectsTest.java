@@ -1,4 +1,4 @@
-package tests;
+package tests.formTests;
 
 import com.codeborne.selenide.Configuration;
 import helpers.Attachments;

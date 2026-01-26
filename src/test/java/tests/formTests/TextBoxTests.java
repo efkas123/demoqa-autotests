@@ -1,11 +1,11 @@
+package tests.formTests;
+
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.files.DownloadActions.click;
-import static org.openqa.selenium.bidi.script.LocalValue.setValue;
 
 public class TextBoxTests {
 
