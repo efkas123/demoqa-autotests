@@ -7,6 +7,7 @@ import helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.ProfilePage;
@@ -17,6 +18,7 @@ import java.util.Map;
 public class TestBase {
     ProfilePage profilePage = new ProfilePage();
 
+    @BeforeAll
     public static void setUp() {
         Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         Configuration.pageLoadStrategy  = "eager";
@@ -41,6 +43,7 @@ public class TestBase {
     }
 
     //    @AfterEach
+            //    void addAttachments() { //todo
             //    void addAttachments() { //todo
         //        Attachments.screenshotAs();
         //        Attachments.pageSource();

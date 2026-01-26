@@ -1,6 +1,9 @@
 package data;
 
+import models.IsbnModel;
 import models.LoginBodyModel;
+
+import java.util.List;
 
 public class TestData {
 
@@ -13,4 +16,6 @@ public class TestData {
     public static final String
         JS_BOOK_ISBN = "9781449365035",
         JS_BOOK_NAME = "Speaking JavaScript";
+
+    public static final List<IsbnModel> BOOK_LIST = List.of(new IsbnModel(JS_BOOK_ISBN));
 }
