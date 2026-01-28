@@ -39,7 +39,7 @@ public class ProfilePage {
 
     @Step("Верификация отсутствия книг в коллекции пользователя")
     public ProfilePage emptyUserCollectionVerification(String title){
-        booksTable.shouldBe(text(title));
+        booksTable.shouldNotBe(text(title));
         return this;
     }
 
