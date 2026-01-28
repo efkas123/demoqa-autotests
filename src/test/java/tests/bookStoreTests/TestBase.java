@@ -1,9 +1,12 @@
 package tests.bookStoreTests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -18,7 +21,7 @@ public class TestBase {
     @BeforeAll
     public static void setUp() {
         Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
-        Configuration.pageLoadStrategy  = "eager";
+        Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "128.0"); //То, что есть на selenoid школы
@@ -39,13 +42,12 @@ public class TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
-    //    @AfterEach
-            //    void addAttachments() { //todo
-            //    void addAttachments() { //todo
-        //        Attachments.screenshotAs();
-        //        Attachments.pageSource();
-        //        Attachments.browserConsoleLogs();
-        //        Attachments.addVideo();
-        //        Selenide.closeWebDriver();
-        //    }
+    @AfterEach
+    void addAttachments() {
+        Attachments.screenshotAs("Last screenshot");
+        Attachments.pageSource();
+        Attachments.browserConsoleLogs();
+        Attachments.addVideo();
+        Selenide.closeWebDriver();
+    }
 }

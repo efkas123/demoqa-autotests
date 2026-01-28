@@ -76,5 +76,3 @@ public class ProfileTests extends TestBase {
 
     }
 }
-
-//Задача на данный момент - добавить удаление ПЕРЕД каждым запуском теста //todo
