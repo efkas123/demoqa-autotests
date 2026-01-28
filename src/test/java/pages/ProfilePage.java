@@ -11,7 +11,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class ProfilePage {
     SelenideElement
         userName = $("#userName-value"),
-        booksTable = $(".rt-body"),
+        booksTable = $(".rt-table"),
         deleteBook = $("#delete-record-undefined"),
         okDeleteBookButton = $("#closeSmallModal-ok"),
         deleteAllBooksButton = $$("button#submit").findBy(text("Delete All Books"));

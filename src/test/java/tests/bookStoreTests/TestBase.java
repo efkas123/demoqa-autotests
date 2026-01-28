@@ -33,7 +33,7 @@ public class TestBase {
         ));
         Configuration.browserCapabilities = capabilities;
 
-        RestAssured.baseURI = System.getProperty("baseUrl", "https://demoqa.com");
+        RestAssured.baseURI = System.getProperty("baseURI", "https://demoqa.com");
 
     }
 
