@@ -70,8 +70,7 @@ public class ProfileTests extends TestBase {
                 .cookieAuth(userId, expires, token)
                 .openProfilePage()
                 .profileUsernameVerification(AUTH_DATA.getUserName())
-                .emptyUserCollectionVerification(JS_BOOK_NAME)
-                .bookRemovalFromCollection();
+                .emptyUserCollectionVerification(JS_BOOK_NAME);
 
 
     }
