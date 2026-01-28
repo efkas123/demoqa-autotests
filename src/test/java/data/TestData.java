@@ -7,8 +7,8 @@ import java.util.List;
 
 public class TestData {
 
-    protected static String userName = System.getProperty("userName", "filippkotov6669"); //todo
-    protected static String password = System.getProperty("password", "Filippkotov6669%"); //todo
+    protected static String userName = System.getProperty("userName", "filippkotov666"); //todo
+    protected static String password = System.getProperty("password", "Filippkotov666%"); //todo
 
 
     public static final LoginBodyModel AUTH_DATA = new LoginBodyModel(userName, password);

@@ -13,7 +13,8 @@ public class ProfilePage {
         userName = $("#userName-value"),
         booksTable = $(".rt-body"),
         deleteBook = $("#delete-record-undefined"),
-        okDeleteBookButton = $("#closeSmallModal-ok");
+        okDeleteBookButton = $("#closeSmallModal-ok"),
+        deleteAllBooksButton = $$("button#submit").findBy(text("Delete All Books"));
 
     @Step("Авторизация через Cookie")
     public ProfilePage cookieAuth(String userId, String expires, String token) {
@@ -47,6 +48,12 @@ public class ProfilePage {
         deleteBook.click();
         okDeleteBookButton.click();
         return this;
+    }
+
+    @Step("Удаление всех книг из коллекции")
+    public ProfilePage deleteAllBooksFromCollection(){
+        deleteAllBooksButton.click();
+        return  this;
     }
 
 

@@ -1,5 +1,6 @@
 package tests.bookStoreTests;
 
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import models.AddListOfBooksModel;
 import models.DeleteBookModel;
@@ -20,6 +21,8 @@ public class ProfileTests extends TestBase {
     @Test
     @DisplayName("Удаление товара из списка через RestAPI")
     void successfulApiBookDeleteTest() {
+
+
         Response authResponse = step("Отправка запроса на авторизацию", () ->
                 given(baseRequestSpec)
                         .body(AUTH_DATA)
@@ -34,9 +37,19 @@ public class ProfileTests extends TestBase {
                 expires = authResponse.path("expires"),
                 userId = authResponse.path("userId");
 
+        step("Удаление всех книг из коллекции", () ->
+                given(baseRequestSpec)
+                        .header("Authorization", "Bearer " + token)
+                        .when()
+                        .queryParam("UserId", userId)
+                        .delete("/BookStore/v1/Books")
+                        .then()
+                        .spec(baseResponseSpec(204))
+        );
+
         step("Отправить запрос на добавление книги в коллекцию", () ->
                 given(baseRequestSpec)
-                        .header("authorization", "Basic " + token)
+                        .header("Authorization", "Bearer " + token)
                         .body(new AddListOfBooksModel(userId, BOOK_LIST))
                         .when()
                         .post("/BookStore/v1/Books")
@@ -46,8 +59,8 @@ public class ProfileTests extends TestBase {
 
         step("Отправка запроса на удаление книги \"Speaking JavaScript\"из коллекции", () ->
                 given(baseRequestSpec)
-                .header("authorization", "Basic " + token)
-                        .body(new DeleteBookModel(userId, JS_BOOK_ISBN))
+                        .header("authorization", "Bearer " + token)
+                        .body(new DeleteBookModel(JS_BOOK_ISBN, userId))
                         .when()
                         .delete("BookStore/v1/Book")
                         .then()
@@ -63,3 +76,5 @@ public class ProfileTests extends TestBase {
 
     }
 }
+
+//Задача на данный момент - добавить удаление ПЕРЕД каждым запуском теста //todo

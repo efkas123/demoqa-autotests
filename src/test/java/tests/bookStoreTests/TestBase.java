@@ -1,12 +1,9 @@
 package tests.bookStoreTests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -24,7 +21,7 @@ public class TestBase {
         Configuration.pageLoadStrategy  = "eager";
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion", "7");
+        Configuration.browserVersion = System.getProperty("browserVersion", "128.0"); //То, что есть на selenoid школы
         Configuration.remote = System.getProperty("remoteUrl");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
